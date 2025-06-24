@@ -23,4 +23,6 @@ public:
 
     // Writes the Person class objects in the collection sequentially into the specified file.
     int WriteToFile(const char filename[]);
+
+    std::deque<Person>::iterator erase(std::deque<Person>::iterator i);
 };

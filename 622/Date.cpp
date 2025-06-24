@@ -53,9 +53,9 @@ Date& Date::operator()(int y, int m, int d) {
 }
 
 string Date::Format() {
-	string str = to_string(this->year % 100) + "--";
+	string str = to_string(this->year) + "-";
 	if (this->month < 10) str += "0";
-	str += to_string(this->month) + "--";
+	str += to_string(this->month) + "-";
 	if (this->day < 10) str += "0";
 	str += to_string(this->day);
 	return str;

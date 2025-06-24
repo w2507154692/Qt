@@ -26,9 +26,6 @@
     <QtRcc Include="Qt622.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="Qt622.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtMoc Include="Qt622.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -49,6 +46,15 @@
     <ClCompile Include="PersonSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Detail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DetailChangeable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleTableWidgetItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h">
@@ -60,5 +66,27 @@
     <ClInclude Include="PersonSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DoubleTableWidgetItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Qt622.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Detail.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="DetailChangeable.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Detail.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DetailChangeable.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

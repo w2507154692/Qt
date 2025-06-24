@@ -93,11 +93,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="Qt622.qrc" />
-    <QtUic Include="Qt622.ui" />
     <QtMoc Include="Qt622.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Detail.cpp" />
+    <ClCompile Include="DetailChangeable.cpp" />
+    <ClCompile Include="DoubleTableWidgetItem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PersonSet.cpp" />
@@ -105,8 +107,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
+    <QtMoc Include="Detail.h" />
+    <QtMoc Include="DetailChangeable.h" />
+    <ClInclude Include="DoubleTableWidgetItem.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PersonSet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Detail.ui" />
+    <QtUic Include="DetailChangeable.ui" />
+    <QtUic Include="Qt622.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

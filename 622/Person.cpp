@@ -37,7 +37,7 @@ bool operator!=(Person person1, Person person2) {
 }
 
 bool operator==(Person person1, Person person2) {
-	return person1.id != person2.id;
+	return person1.id == person2.id;
 }
 
 
