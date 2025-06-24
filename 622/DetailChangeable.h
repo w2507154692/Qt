@@ -9,16 +9,19 @@ class DetailChangeable
 	Q_OBJECT
 public:
 	DetailChangeable(PersonSet* set, QWidget *parent = nullptr);
+	DetailChangeable(Person* psn, QWidget* parent = nullptr);
 	~DetailChangeable();
 	
-	void calendarSetting(void);
-	void pushButtonSetting(void);
-	void lineEditSetting(void);
+	void CalendarSetting(void);
+	void PushButtonSettingOfAdd(void);
+	void PushButtonSettingOfModify(void);
+	void LineEditSetting(void);
 
 private:
 	Ui::DetailChangeableClass ui;
 
-	PersonSet* psnSet;
+	PersonSet* personSet;
+	Person* person;
 	bool calendarVisible;
 };
 

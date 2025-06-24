@@ -9,5 +9,7 @@
         <file>icon/search3.ico</file>
         <file>icon/undo.png</file>
         <file>icon/view.png</file>
+        <file>QTableWidgetStyle.qss</file>
+        <file>QMainWindowStyle.qss</file>
     </qresource>
 </RCC>

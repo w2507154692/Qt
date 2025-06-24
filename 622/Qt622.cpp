@@ -15,6 +15,8 @@
 #include "Detail.h"
 #include "DetailChangeable.h"
 #include "DoubleTableWidgetItem.h"
+#include "QFile"
+#include "QTextStream"
 
 void Qt622::MenuBarSetting(void) {
     QMenuBar* menuBar = ui.menuBar;
@@ -47,7 +49,13 @@ void Qt622::ToolBarSetting(void) {
             OnDisplaySelectedPerson(selectedItems.at(0));
         });
     connect(modifyToolAction, &QAction::triggered, [=]() {
-        QMessageBox::information(this, "提示", "修改成员信息！");
+        QList<QTableWidgetItem*>selectedItems = ui.personTable->selectedItems(); //获得选中项
+        if (selectedItems.isEmpty())
+            QMessageBox::warning(this, "警告", "未选择成员！");
+        else {
+            QString id = selectedItems.at(0)[0].text(); //获得选中项的第一行第一列
+            OnUpdatePersonAction(id);
+        }
         });
 }
 
@@ -151,17 +159,34 @@ void Qt622::OnDisplaySelectedPerson(QTableWidgetItem* item) {
 
 void Qt622::OnAddPersonAction(void) {
     DetailChangeable* detailChangeable = new DetailChangeable(m_pPersonSet, this);
-    detailChangeable->setAttribute(Qt::WA_DeleteOnClose); // 关闭时自动释放
+    detailChangeable->setAttribute(Qt::WA_DeleteOnClose); //关闭时自动释放
 
-    connect(detailChangeable, &QObject::destroyed, this, [=]() {
+    //检测到窗口关闭时才调用Refresh函数，防止过早调用，刷新过早
+    connect(detailChangeable, &QObject::destroyed, this, [=]() { 
         RefreshTable(m_pPersonSet);
         });
 
     detailChangeable->show(); 
 }
 
+void Qt622::OnUpdatePersonAction(QString m_pID) {
+    Person person;
+    person.SetId(m_pID.toStdString());
+    PersonSet::iterator it = std::find(m_pPersonSet->begin(), m_pPersonSet->end(), person); //找到Id对应的Person
+
+    DetailChangeable* detailChangeable = new DetailChangeable(&(*it), this);
+    detailChangeable->setAttribute(Qt::WA_DeleteOnClose); //关闭时自动释放
+
+    //检测到窗口关闭时才调用Refresh函数，防止过早调用，刷新过早
+    connect(detailChangeable, &QObject::destroyed, this, [=]() {
+        RefreshTable(m_pPersonSet);
+        });
+
+    detailChangeable->show();
+}
+
 void Qt622::OnRightClickShowMenu(QPoint qp) {}
-void Qt622::OnUpdatePersonAction(QString m_pID) {}
+
 
 void Qt622::RefreshTable(PersonSet* psnSet) {
     QTableWidget* table = ui.personTable;
@@ -191,6 +216,14 @@ void Qt622::PersonTableSetting(void) {
         table->setColumnWidth(i, width + 50);
     }
 
+    QFile styleFile(":/new/prefix1/QTableWidgetStyle.qss");
+    if (styleFile.open(QFile::ReadOnly)) {
+        QString styleSheet = QLatin1String(styleFile.readAll());
+        ui.personTable->setStyleSheet(styleSheet);  // 只应用于personTable
+        // 如果要应用到整个窗口，改为 this->setStyleSheet(styleSheet);
+        styleFile.close();
+    }
+
     RefreshTable(m_pPersonSet); //刷新表格
     SortPersonInfo(); //设置排序属性
     SearchSetting(); //设置搜索属性
@@ -202,6 +235,13 @@ Qt622::Qt622(PersonSet* set, QWidget* parent)
 {
     ui.setupUi(this);
     m_pPersonSet = set;
+
+    QFile styleFile(":/new/prefix1/QMainWindowStyle.qss");
+    if (styleFile.open(QFile::ReadOnly)) {
+        QString styleSheet = QLatin1String(styleFile.readAll());
+        this->setStyleSheet(styleSheet);
+        styleFile.close();
+    }
 
     MenuBarSetting();
     ToolBarSetting();

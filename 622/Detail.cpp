@@ -3,7 +3,7 @@
 
 
 Detail::Detail(Person* psn, QWidget* parent)
-	:QMainWindow() {
+	:QMainWindow(parent) {
 	ui.setupUi(this);
 
 	ui.lineName->setText(QString::fromLocal8Bit(psn->GetName()));
