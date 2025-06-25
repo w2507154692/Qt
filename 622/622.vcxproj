@@ -104,9 +104,11 @@
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PersonSet.cpp" />
     <ClCompile Include="Qt622.cpp" />
+    <ClCompile Include="UndoRedo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
+    <ClInclude Include="UndoRedo.h" />
     <QtMoc Include="Detail.h" />
     <QtMoc Include="DetailChangeable.h" />
     <ClInclude Include="DoubleTableWidgetItem.h" />

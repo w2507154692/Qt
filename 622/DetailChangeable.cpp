@@ -94,6 +94,15 @@ void DetailChangeable::PushButtonSettingOfAdd(void) {
         tmpPerson.SetSex(ui.comboSex->currentText().toLocal8Bit().toStdString());
         tmpPerson.SetBirthday(Date(year, month, day));
 
+		//UndoRedo
+		operation op;
+		op.type = 1;
+		op.personList.push_back(tmpPerson);
+		op.indexList.push_back(0);
+		undoRedo->RecordOp(op);
+		undoRedo->undoAction->setEnabled(true);
+		undoRedo->redoAction->setEnabled(false);
+
         personSet->push_front(tmpPerson);
 		QMessageBox::information(this, "提示", "添加成功！");
 		this->close();
@@ -106,6 +115,18 @@ void DetailChangeable::PushButtonSettingOfAdd(void) {
 
 void DetailChangeable::PushButtonSettingOfModify(void) {
 	ui.buttonOK->setText(QString::fromUtf8("更新"));
+	ui.lineIdChangeable->setEnabled(false);
+	ui.lineIdChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.comboSex->setEnabled(false);
+	ui.comboSex->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineYearChangeable->setEnabled(false);
+	ui.lineYearChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineMonthChangeable->setEnabled(false);
+	ui.lineMonthChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineDayChangeable->setEnabled(false);
+	ui.lineDayChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.buttonCalendar->setEnabled(false);
+	ui.buttonCalendar->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
 
 	ui.lineNameChangeable->setText(QString::fromLocal8Bit(person->GetName()));
 	ui.linePhoneNoChangeable->setText(QString::fromLocal8Bit(person->GetPhoneNo()));
@@ -172,6 +193,8 @@ void DetailChangeable::PushButtonSettingOfModify(void) {
 			return;
 		}
 
+		Person tmpPerson = *person;
+
         person->SetName(ui.lineNameChangeable->text().toLocal8Bit().toStdString());
         person->SetPhoneNo(ui.linePhoneNoChangeable->text().toLocal8Bit().toStdString());
         person->SetId(ui.lineIdChangeable->text().toLocal8Bit().toStdString());
@@ -182,6 +205,14 @@ void DetailChangeable::PushButtonSettingOfModify(void) {
         person->SetDepartment(ui.lineDepartmentChangeable->text().toLocal8Bit().toStdString());
         person->SetSex(ui.comboSex->currentText().toLocal8Bit().toStdString());
         person->SetBirthday(Date(year, month, day));
+
+		//UndoRedo
+		operation op;
+		op.type = 3;
+		op.personList.push_back(tmpPerson);
+		undoRedo->RecordOp(op);
+		undoRedo->undoAction->setEnabled(true);
+		undoRedo->redoAction->setEnabled(false);
 
 		QMessageBox::information(this, "提示", "修改成功！");
 		this->close();
@@ -211,11 +242,12 @@ void DetailChangeable::LineEditSetting(void) {
 		});
 }
 
-DetailChangeable::DetailChangeable(PersonSet* set, QWidget* parent)
+DetailChangeable::DetailChangeable(UndoRedo* unRe, PersonSet* set, QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	personSet = set;
+	undoRedo = unRe;
 
 	//CalendarWidget
 	CalendarSetting();
@@ -227,12 +259,13 @@ DetailChangeable::DetailChangeable(PersonSet* set, QWidget* parent)
 	LineEditSetting();
 }
 
-DetailChangeable::DetailChangeable(Person* psn, QWidget* parent)
+DetailChangeable::DetailChangeable(UndoRedo* unRe, Person* psn, QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	this->setWindowTitle(QString::fromUtf8("修改人员"));
 	person = psn;
+	undoRedo = unRe;
 
 	//CalendarWidget
 	CalendarSetting();
@@ -248,3 +281,4 @@ DetailChangeable::DetailChangeable(Person* psn, QWidget* parent)
 DetailChangeable::~DetailChangeable()
 {}
 
+//522121200410051650

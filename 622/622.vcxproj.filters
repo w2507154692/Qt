@@ -55,6 +55,9 @@
     <ClCompile Include="DoubleTableWidgetItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UndoRedo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h">
@@ -67,6 +70,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DoubleTableWidgetItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoRedo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

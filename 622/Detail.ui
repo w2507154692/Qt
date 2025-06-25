@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
-    <height>243</height>
+    <width>586</width>
+    <height>261</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -108,7 +108,7 @@
     <rect>
      <x>250</x>
      <y>20</y>
-     <width>171</width>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
@@ -166,7 +166,7 @@
     <rect>
      <x>250</x>
      <y>70</y>
-     <width>261</width>
+     <width>291</width>
      <height>41</height>
     </rect>
    </property>
@@ -236,7 +236,7 @@
     <rect>
      <x>390</x>
      <y>120</y>
-     <width>121</width>
+     <width>181</width>
      <height>41</height>
     </rect>
    </property>
@@ -270,9 +270,9 @@
   <widget class="QWidget" name="horizontalLayoutWidget_8">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>300</x>
      <y>170</y>
-     <width>251</width>
+     <width>271</width>
      <height>41</height>
     </rect>
    </property>
@@ -308,7 +308,7 @@
     <rect>
      <x>20</x>
      <y>170</y>
-     <width>91</width>
+     <width>131</width>
      <height>41</height>
     </rect>
    </property>
@@ -335,7 +335,7 @@
   <widget class="QWidget" name="horizontalLayoutWidget_10">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>170</x>
      <y>170</y>
      <width>111</width>
      <height>41</height>

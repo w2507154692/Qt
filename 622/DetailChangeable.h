@@ -2,14 +2,15 @@
 #include <QMainWindow>
 #include "ui_DetailChangeable.h"
 #include "PersonSet.h"
+#include "UndoRedo.h"
 
 class DetailChangeable 
 	:public QMainWindow
 {
 	Q_OBJECT
 public:
-	DetailChangeable(PersonSet* set, QWidget *parent = nullptr);
-	DetailChangeable(Person* psn, QWidget* parent = nullptr);
+	DetailChangeable(UndoRedo* unRe, PersonSet* set, QWidget *parent = nullptr);
+	DetailChangeable(UndoRedo* unRe, Person* psn, QWidget* parent = nullptr);
 	~DetailChangeable();
 	
 	void CalendarSetting(void);
@@ -22,6 +23,7 @@ private:
 
 	PersonSet* personSet;
 	Person* person;
+	UndoRedo* undoRedo;
 	bool calendarVisible;
 };
 

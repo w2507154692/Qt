@@ -17,9 +17,8 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     PersonSet Set;
-    LoadLibToSet(Set);
 
-    Qt622 window(&Set);
+    Qt622 window("personnel.dat", &Set);
     window.show();
     return app.exec();
 }
