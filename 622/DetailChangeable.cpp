@@ -116,17 +116,17 @@ void DetailChangeable::PushButtonSettingOfAdd(void) {
 void DetailChangeable::PushButtonSettingOfModify(void) {
 	ui.buttonOK->setText(QString::fromUtf8("更新"));
 	ui.lineIdChangeable->setEnabled(false);
-	ui.lineIdChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineIdChangeable->setStyleSheet("background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 6px;");
 	ui.comboSex->setEnabled(false);
-	ui.comboSex->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.comboSex->setStyleSheet("background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 6px;");
 	ui.lineYearChangeable->setEnabled(false);
-	ui.lineYearChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineYearChangeable->setStyleSheet("background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 6px;");
 	ui.lineMonthChangeable->setEnabled(false);
-	ui.lineMonthChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineMonthChangeable->setStyleSheet("background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 6px;");
 	ui.lineDayChangeable->setEnabled(false);
-	ui.lineDayChangeable->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.lineDayChangeable->setStyleSheet("background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 6px;");
 	ui.buttonCalendar->setEnabled(false);
-	ui.buttonCalendar->setStyleSheet("background: #EEEEE; border: 1px solid #CCCCC; border-radius: 6px;");
+	ui.buttonCalendar->setStyleSheet("background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 6px;");
 
 	ui.lineNameChangeable->setText(QString::fromLocal8Bit(person->GetName()));
 	ui.linePhoneNoChangeable->setText(QString::fromLocal8Bit(person->GetPhoneNo()));

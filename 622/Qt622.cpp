@@ -384,6 +384,7 @@ void Qt622::LoadFile(void) {
 void Qt622::RefreshTable(PersonSet* psnSet) {
     QTableWidget* table = ui.personTable;
 
+    //取消排序
     table->setSortingEnabled(false);
 
     int len = psnSet->size();
@@ -397,6 +398,7 @@ void Qt622::RefreshTable(PersonSet* psnSet) {
         table->setItem(row, 4, new DoubleTableWidgetItem(QString::number(it->GetSalary(), 'f', 2)));
     }
 
+    //激活排序
     table->setSortingEnabled(true);
 
     //取消搜索状态
