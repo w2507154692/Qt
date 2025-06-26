@@ -58,3 +58,7 @@ int PersonSet::WriteToFile(const char filename[]) {
 	fout.close();
 	return i;
 }
+
+std::deque<Person>::iterator PersonSet::erase(std::deque<Person>::iterator i) {
+	return std::deque<Person>::erase(i);
+}
